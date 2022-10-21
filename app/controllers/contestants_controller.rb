@@ -1,10 +1,12 @@
 class ContestantsController < ApplicationController
   before_action :set_contestant, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /contestants or /contestants.json
   def index
     @contestants = Contestant.all
   end
+
 
   # GET /contestants/1 or /contestants/1.json
   def show
