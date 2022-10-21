@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_104353) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_21_150458) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,17 +37,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_104353) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "voters", force: :cascade do |t|
-    t.string "name"
-    t.bigint "contestant_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["contestant_id"], name: "index_voters_on_contestant_id"
-    t.index ["user_id"], name: "index_voters_on_user_id"
-  end
-
   add_foreign_key "contestants", "users"
-  add_foreign_key "voters", "contestants"
-  add_foreign_key "voters", "users"
 end
