@@ -8,10 +8,10 @@
     <p>
       <%= link_to "Show this contestant", contestant %>
     </p>
-     <% if contestant.number_of_votes <= 0 %>
+     
 
-    <button> add vote </button>
-    <% end %>
+    <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) %>
+
   <% end %>
   
           
