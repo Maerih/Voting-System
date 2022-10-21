@@ -15,6 +15,7 @@ class ContestantsController < ApplicationController
   # GET /contestants/new
   def new
     @contestant = Contestant.new
+    @contestant.user_id = current_user.id
   end
 
   # GET /contestants/1/edit
@@ -24,6 +25,7 @@ class ContestantsController < ApplicationController
   # POST /contestants or /contestants.json
   def create
     @contestant = Contestant.new(contestant_params)
+    @contestant.user_id = current_user.id
 
     respond_to do |format|
       if @contestant.save
@@ -38,6 +40,7 @@ class ContestantsController < ApplicationController
 
   # PATCH/PUT /contestants/1 or /contestants/1.json
   def update
+    @contestant.user_id = current_user.id
     respond_to do |format|
       if @contestant.update(contestant_params)
         format.html { redirect_to contestant_url(@contestant), notice: "Contestant was successfully updated." }
@@ -67,6 +70,6 @@ class ContestantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contestant_params
-      params.require(:contestant).permit(:name, :email, :number_of_votes, :user_id)
+      params.require(:contestant).permit(:name, :email, :number_of_votes)
     end
 end

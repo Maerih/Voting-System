@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_092719) do
   create_table "contestants", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.integer "number_of_votes"
+    t.integer "number_of_votes", default: 0
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
