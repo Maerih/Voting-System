@@ -1,5 +1,5 @@
 class Contestant < ApplicationRecord
-  has_many :voters
+  has_many :voters  ,dependent: :destroy
   belongs_to :user
 
   def add_votes
