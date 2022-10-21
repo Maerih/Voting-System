@@ -1,4 +1,5 @@
 class Contestant < ApplicationRecord
+  has_many :voters
   belongs_to :user
 
   def add_votes

@@ -1,0 +1,27 @@
+<h1>Listing voters</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Contestant</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @voters.each do |voter| %>
+  <tr>
+    <td><%= voter.name %></td>
+    <td><%= voter.contestant %></td>
+    <td><%= voter.user %></td>
+    <td><%= link_to 'Show', [voter.contestant, voter] %></td>
+    <td><%= link_to 'Edit', edit_contestant_voter_path(voter.contestant, voter) %></td>
+    <td><%= link_to 'Destroy', [voter.contestant, voter], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Voter', new_contestant_voter_path(params[:contestant_id]) %>
