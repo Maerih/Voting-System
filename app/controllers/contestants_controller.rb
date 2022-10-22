@@ -70,6 +70,6 @@ class ContestantsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contestant_params
-      params.require(:contestant).permit(:name, :email, :number_of_votes)
+      params.require(:contestant).permit(:name, :email, :avatar)
     end
 end
