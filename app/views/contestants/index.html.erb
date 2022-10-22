@@ -5,12 +5,16 @@
 <div id="contestants">
   <% @contestants.each do |contestant| %>
     <%= render contestant %>
+    
     <p>
       <%= link_to "Show this contestant", contestant %>
     </p>
-     
+
+
+     <% if current_user.vote_count == 0 %>
 
     <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) %>
+    <% end %>
 
   <% end %>
   
