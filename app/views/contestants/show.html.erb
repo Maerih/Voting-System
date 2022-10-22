@@ -1,10 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @contestant %>
+<p> Members who voted for <%= @contestant.name %> </p>
 
-<div>
-  <%= link_to "Edit this contestant", edit_contestant_path(@contestant) %> |
-  <%= link_to "Back to contestants", contestants_path %>
+<% @contestant.votes.each do |vote| %>
+    <p> <%= vote.user.name %> </p>
+<% end %>
 
-  <%= button_to "Destroy this contestant", @contestant, method: :delete %>
-</div>
+
+

@@ -1,0 +1,28 @@
+<nav>
+<div class="logo">
+   <% if user_signed_in? %>
+   <%= current_user.name %> 
+      
+     <% else %>
+     Join today
+     <% end %>
+       
+</div>
+<input type="checkbox" id="click">
+<label for="click" class="menu-btn">
+  <h2>X </h2>   
+  
+</label>
+<ul>
+
+    <% if user_signed_in? %>
+    <li><%= link_to "Home", root_path ,class: "active" %></li>
+    <li><%= link_to "Contestants", contestants_path %></li>
+    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+    <% else %>
+    <li><%= link_to "Sign up", new_user_registration_path %></li>
+    <li><%= link_to "Sign in", new_user_session_path %></li>
+    <% end %>
+    
+</ul>
+</nav>
