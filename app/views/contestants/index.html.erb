@@ -2,21 +2,28 @@
 
 <h1>Contestants</h1>
 
-<div id="contestants">
+<div id="contestants" class="d-flex justify-content-around">
   <% @contestants.each do |contestant| %>
-    <%= render contestant %>
-    
-    <p>
-      <%= link_to "Show this contestant", contestant %>
-    </p>
+    <div> 
+    <figure class="snip1390">
+           <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg" alt="profile-sample3" class="profile" />
+      <figcaption>
+         <h2><%= contestant.name %></h2>
+        <blockquote>Votes : <%= contestant.number_of_votes %></blockquote>
+      </figcaption>
+      <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) , class: "btn btn-success my-3" %> 
+ 
+    </figure>
 
+       
+        
+        <%= link_to "Show this contestant", contestant %>
+     
+   </div>
 
-     <% if current_user.vote_count == 0 %>
-
-    <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) %>
-    <% end %>
-
+  
   <% end %>
+
   
           
 </div>
