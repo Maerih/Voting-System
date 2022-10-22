@@ -1,4 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% if current_user.vote_count > 0 %>
+  <p class="d-flex justify-content-center"> You have already voted </p>
+<% end %>
 <div id="contestants" class="d-flex justify-content-around">
   <% @contestants.each do |contestant| %>
     <div> 
@@ -20,7 +22,10 @@
       <%= button_to "Remove Contestant", contestant, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger my-3" %>
       <%= link_to "Edit Contestant", edit_contestant_path(contestant) , class:"btn btn-success my-1" %>
       <% else %>
-      <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) , class: "btn btn-dark" %> 
+        <% if current_user.vote_count == 0 %>
+         <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) , class: "btn btn-dark" %> 
+         <% end %>
+
       <% end %>
      
  

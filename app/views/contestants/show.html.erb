@@ -1,11 +1,17 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @contestant %>
-<p> Members who voted for <%= @contestant.name %> </p>
+<h3 class="d-flex justify-content-center text-decoration-underline"> Members who voted for <%= @contestant.name.capitalize %> </h3>
+ 
+
 
 <% @contestant.votes.each do |vote| %>
-    <p> <%= vote.user.name %> </p>
+  <div class="d-flex  justify-content-start ">
+    <i class="fa-solid fa-user fa-2x mx-2 "></i>  <h2 class="mx-4"> <%= vote.user.name %> </h2>
+  </div>
 <% end %>
 
+
+<div class="d-flex justify-content-center">
+   <%= link_to "Back to Contestants", contestants_path , class:"d-flex text-decoration-none my-4 btn btn-danger" %>
+</div>
 
 
