@@ -11,8 +11,11 @@
     </div>
   <% end %>
 
+  Are you sure you want to vote  <%= @vote.contestant.name %>  
+  You can only vote once so be sure you want to vote for this contestant
+
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "vote" %>
   </div>
 <% end %>
