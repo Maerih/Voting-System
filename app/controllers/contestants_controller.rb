@@ -4,7 +4,7 @@ class ContestantsController < ApplicationController
 
   # GET /contestants or /contestants.json
   def index
-    @contestants = Contestant.all
+    @contestants = Contestant.all.order(number_of_votes: :desc)
   end
 
 

@@ -5,11 +5,24 @@
 <div id="contestants">
   <% @contestants.each do |contestant| %>
     <%= render contestant %>
+    
     <p>
       <%= link_to "Show this contestant", contestant %>
     </p>
-    <button>add like </button>
-  <% end %>
-</div>
 
-<%= link_to "New contestant", new_contestant_path %>
+
+     <% if current_user.vote_count == 0 %>
+
+    <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) %>
+    <% end %>
+
+  <% end %>
+  
+          
+</div>
+<%if can? :create, Contestant%>
+  <p>
+    <%= link_to "New Contestant", new_contestant_path %>
+  </p>
+<%end%>
+

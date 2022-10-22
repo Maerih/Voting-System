@@ -14,6 +14,8 @@ gem "pg", "~> 1.1"
 
 gem 'nested_scaffold'
 
+gem 'cancancan'
+
 gem "devise"
 
 # Use the Puma web server [https://github.com/puma/puma]
