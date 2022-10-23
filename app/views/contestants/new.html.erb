@@ -1,9 +1,15 @@
-<h1>New contestant</h1>
 
-<%= render "form", contestant: @contestant %>
+<div class="d-flex  justify-content-center">
+  <div>
 
-<br>
+   <%= render "form", contestant: @contestant %>
+   </div>
+   
+   
+       <%= link_to "Back to Contestants", contestants_path , class:"d-flex text-decoration-none w-50 my-3 btn btn-danger" %>
+   
+  
 
-<div>
-  <%= link_to "Back to contestants", contestants_path %>
+
 </div>
+

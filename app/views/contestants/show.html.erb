@@ -1,10 +1,17 @@
-<p style="color: green"><%= notice %></p>
 
-<%= render @contestant %>
+<h3 class="d-flex justify-content-center text-decoration-underline"> Members who voted for <%= @contestant.name.capitalize %> </h3>
+ 
 
-<div>
-  <%= link_to "Edit this contestant", edit_contestant_path(@contestant) %> |
-  <%= link_to "Back to contestants", contestants_path %>
 
-  <%= button_to "Destroy this contestant", @contestant, method: :delete %>
+<% @contestant.votes.each do |vote| %>
+  <div class="d-flex  justify-content-start ">
+    <i class="fa-solid fa-user fa-2x mx-2 "></i>  <h2 class="mx-4"> <%= vote.user.name %> </h2>
+  </div>
+<% end %>
+
+
+<div class="d-flex justify-content-center">
+   <%= link_to "Back to Contestants", contestants_path , class:"d-flex text-decoration-none my-4 btn btn-danger" %>
 </div>
+
+

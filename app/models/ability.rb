@@ -8,7 +8,8 @@ class Ability
     if user.name == "admin"
       can :manage, :all
     else
-      can :read, :all
+      can :read , :contestants
+      
     end
     # Define abilities for the user here. For example:
     #

@@ -1,7 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Contestants</h1>
-
+<% if current_user.vote_count > 0 && current_user.name != "admin" %>
+  <p class="d-flex justify-content-center"> You have already voted </p>
+<% end %>
 <div id="contestants" class="d-flex justify-content-around">
   <% @contestants.each do |contestant| %>
     <div> 
@@ -9,10 +8,26 @@
           
            <%= image_tag contestant.avatar , class: "profile" %>
       <figcaption>
-         <h2><%= contestant.name %></h2>
+        <% if can? :read , contestant.votes %>
+         <h1 class="d-flex justify-content-center"><%= link_to contestant.name.capitalize, contestant , class:" text-warning text-decoration-none" %></h1>
+        <% else %> 
+        <h1 class="d-flex justify-content-center text-warning"><%= contestant.name %></h1>
+        <% end %>
+
+        <% if can? :manage , contestant.votes %>
         <blockquote>Votes : <%= contestant.number_of_votes %></blockquote>
+        <% end %>
       </figcaption>
-      <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) , class: "btn btn-success my-3" %> 
+      <% if current_user.name == "admin" %>
+      <%= button_to "Remove Contestant", contestant, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger my-3" %>
+      <%= link_to "Edit Contestant", edit_contestant_path(contestant) , class:"btn btn-success my-1" %>
+      <% else %>
+        <% if current_user.vote_count == 0 %>
+         <%= link_to "Vote for this contestant", new_contestant_vote_path(contestant) , class: "btn btn-dark" %> 
+         <% end %>
+
+      <% end %>
+     
  
     </figure>
 
@@ -20,8 +35,7 @@
 
        
         
-        <%= link_to "Show this contestant", contestant %>
-     
+    
    </div>
 
   
@@ -31,8 +45,8 @@
           
 </div>
 <%if can? :create, Contestant%>
-  <p>
-    <%= link_to "New Contestant", new_contestant_path %>
-  </p>
+  <div class="d-flex  justify-content-center">
+    <%= link_to "New Contestant", new_contestant_path , class: "btn btn-warning py-2 my-4" %>
+  </div>
 <%end%>
 

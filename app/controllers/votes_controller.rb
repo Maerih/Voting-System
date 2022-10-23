@@ -30,7 +30,7 @@ class VotesController < ApplicationController
     @vote.contestant_id = @contestant.id
 
     if @vote.save
-      redirect_to root_path, notice: 'Vote was successfully created.'
+      redirect_to root_path
     else
       render action: 'new'
     end

@@ -29,7 +29,7 @@ class ContestantsController < ApplicationController
 
     respond_to do |format|
       if @contestant.save
-        format.html { redirect_to contestant_url(@contestant), notice: "Contestant was successfully created." }
+        format.html { redirect_to root_path}
         format.json { render :show, status: :created, location: @contestant }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -43,7 +43,7 @@ class ContestantsController < ApplicationController
     @contestant.user_id = current_user.id
     respond_to do |format|
       if @contestant.update(contestant_params)
-        format.html { redirect_to contestant_url(@contestant), notice: "Contestant was successfully updated." }
+        format.html { redirect_to conetstants_path}
         format.json { render :show, status: :ok, location: @contestant }
       else
         format.html { render :edit, status: :unprocessable_entity }
