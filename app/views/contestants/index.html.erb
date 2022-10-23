@@ -1,5 +1,5 @@
 <% if current_user.vote_count > 0 && current_user.name != "admin" %>
-  <p class="d-flex justify-content-center"> You have already voted </p>
+  <p class="d-flex justify-content-center bg-dark text-light"> You have already voted , you can remove your vote to add a new one </p>
 <% end %>
 <div id="contestants" class="contestants-container">
   <% @contestants.each do |contestant| %>
@@ -27,6 +27,11 @@
          <% end %>
 
       <% end %>
+      <% if current_user.vote_count > 0 && contestant.votes.any? {|vote| vote.user_id == current_user.id } %>
+        <%= button_to "Remove Vote", contestant_vote_path(contestant, contestant.votes.find_by(user_id: current_user.id)), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger my-3" %>
+      <% end %>
+
+     
      
  
     </figure>
@@ -46,7 +51,7 @@
 </div>
 <%if can? :create, Contestant%>
   <div class="d-flex  justify-content-center">
-    <%= link_to "New Contestant", new_contestant_path , class: "btn btn-warning py-2 my-4" %>
+    <%= link_to "Add New Contestant", new_contestant_path , class: "btn btn-warning py-2 my-4" %>
   </div>
 <%end%>
 
