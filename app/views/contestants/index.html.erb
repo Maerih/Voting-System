@@ -1,4 +1,4 @@
-<% if current_user.vote_count > 0 %>
+<% if current_user.vote_count > 0 && current_user.name != "admin" %>
   <p class="d-flex justify-content-center"> You have already voted </p>
 <% end %>
 <div id="contestants" class="d-flex justify-content-around">
