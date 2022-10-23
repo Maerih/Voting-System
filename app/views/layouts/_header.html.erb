@@ -1,28 +1,12 @@
-<nav>
-<div class="logo">
-   <% if user_signed_in? %>
-   <%= current_user.name %> 
-      
-     <% else %>
-     Join today
-     <% end %>
-       
-</div>
-<input type="checkbox" id="click">
-<label for="click" class="menu-btn">
-  <h2>X </h2>   
-  
-</label>
-<ul>
-
+<nav class="navbar bg-light">
+  <form class="container-fluid justify-content-start">
     <% if user_signed_in? %>
-    <li><%= link_to "Home", root_path ,class: "active" %></li>
-    <li><%= link_to "Contestants", contestants_path %></li>
-    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+    <%= link_to "Home" , root_path , class: "btn btn-outline-success me-2" %>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete , class:"btn btn-sm btn-outline-danger" %>
+
     <% else %>
-    <li><%= link_to "Sign up", new_user_registration_path %></li>
-    <li><%= link_to "Sign in", new_user_session_path %></li>
+    <%= link_to "Sign up", new_user_registration_path ,class: "btn btn-outline-success me-2" %>
+    <%= link_to "Log in", new_user_session_path , class: "btn btn-sm btn-outline-info"  %>
     <% end %>
-    
-</ul>
+  </form>
 </nav>
