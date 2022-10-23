@@ -15,12 +15,7 @@
   <div class="card-body">
     <h5 class="card-title"><%= @vote.contestant.name.capitalize %></h5>
     <p class="card-text">
-    Are you sure you want to vote for  <%= @vote.contestant.name %>  ?
-    <p class="text-danger"> 
-    You can only vote once so be sure you want to vote for this contestant
-    </p>
-  
-    
+    Are you sure you want to vote for  <%= @vote.contestant.name %>  ? 
     </p>
     <div class="d-flex justify-content-center">
       <%= f.submit "vote" , class:"btn btn-success " %>

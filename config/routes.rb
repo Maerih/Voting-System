@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   resources :contestants do 
     resources :votes
   end
@@ -10,5 +11,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root "contestants#index"
+  authenticated :user do
+    root "contestants#index", as: :authenticated_root
+
+  end
+
+  root to: "home#index"
+
 end

@@ -48,8 +48,7 @@ class VotesController < ApplicationController
   # DELETE contestants/1/votes/1
   def destroy
     @vote.destroy
-
-    redirect_to contestant_votes_url(@contestant)
+    redirect_to contestants_path
   end
 
   private
