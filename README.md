@@ -40,7 +40,7 @@ If you don't have yarn installed, you can follow this [tutorial](https://classic
 ## Usage
 In your terminal, navigate to your current directory and run this code
 
-`git clone https://github.com/MICHAELMUNAVU83/voting_system.git`
+`git clone https://github.com/maerih/Voting-System.git`
 
 Then run
 
